@@ -9,6 +9,12 @@ from sqlalchemy import create_engine
 # Download sentiment analysis tool VADER Lexicon
 nltk.download('vader_lexicon')
 
+
+# ANALYSIS NOTE:
+# Since our dataset contains cleaned reviews, we will not apply preprocessors such as tokenization, stopwords removal, or lemmatization in this case.
+# Using these techniques could negatively affect the results of the Sentiment Intensity Analyzer.
+
+
 server = 'GB'  # Variable for your Server name
 database = 'MarketingAnalytics' # Variable for your Database name
 
@@ -39,7 +45,8 @@ def fetch_data_from_sql():
 
 df_reviews = fetch_data_from_sql()
 
-#print(df_reviews.head())
+# If It's not possible to clean whitespace (like double space) from ReviewText colum using SQL Query, then we can do that by using Python, for example:
+df_reviews['ReviewText'] = df_reviews['ReviewText'].str.replace(r'\s+', ' ', regex=True).str.strip()
 
 # Initialize the VADER sentiment intensity analyzer for analyzing the sentiment of text data
 sia = SentimentIntensityAnalyzer()
@@ -86,3 +93,19 @@ def sentiment_bucket(score):
         return '-0.49 to 0.0'  # Mildly negative sentiment
     else:
         return '-1.0 to -0.5'  # Strongly negative sentiment
+
+# Apply sentiment analysis to calculate sentiment scores for each review
+df_reviews['SentimentScore'] = df_reviews['ReviewText'].apply(calculate_sentiment)
+
+# Apply sentiment categorization using both text and rating
+df_reviews['SentimentCategory'] = df_reviews.apply(
+    lambda row: categorize_sentiment(row['SentimentScore'], row['Rating']), axis=1)
+
+# Apply sentiment bucketing to categorize scores into defined ranges
+df_reviews['SentimentBucket'] = df_reviews['SentimentScore'].apply(sentiment_bucket)
+
+# Display the first few rows of the DataFrame with sentiment scores, categories, and buckets
+print(df_reviews.head())
+
+# Save the DataFrame with sentiment scores, categories, and buckets to a new CSV file
+df_reviews.to_csv('fact_reviews_sentiment.csv', index=False)
