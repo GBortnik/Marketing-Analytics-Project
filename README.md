@@ -54,11 +54,70 @@ The data model incorporates:
   🔗 **One-to-many** relationships  
   🔄 **Single-direction** cross-filtering (from dimensions to facts)
 
-![Model Relationship](/Model%20Relationships.png)
+![Model Relationship](/images/Model%20Relationships.png)
 
 ## Additional DAX Measures
 The project utilizes supplemental **DAX measures**, including creation of the dimension table `dim_calendar` and the `Conversion Rate` metric. Details below:
 
+- Calendar Dimension Table
+
+Centralized date reference for time-based analysis in Power BI. 
+``` 
+dim_calendar = 
+ADDCOLUMNS (
+    CALENDAR ( DATE ( 2023, 1, 1 ), DATE ( 2025, 12, 31 ) ),
+    "DateAsInteger", FORMAT ( [Date], "YYYYMMDD" ),
+    "Year", YEAR ( [Date] ),
+    "Monthnumber", FORMAT ( [Date], "MM" ),
+    "YearMonthnumber", FORMAT ( [Date], "YYYY/MM" ),
+    "YearMonthShort", FORMAT ( [Date], "YYYY/mmm" ),
+    "MonthNameShort", FORMAT ( [Date], "mmm" ),
+    "MonthNameLong", FORMAT ( [Date], "mmmm" ),
+    "DayOfWeekNumber", WEEKDAY ( [Date] ),
+    "DayOfWeek", FORMAT ( [Date], "dddd" ),
+    "DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+    "Quarter", "Q" & FORMAT ( [Date], "Q" ),
+    "YearQuarter",
+        FORMAT ( [Date], "YYYY" ) & "/Q"
+            & FORMAT ( [Date], "Q" )
+)
+```
+
+- Conversion Rate
+
+Calculates the percentage of visitors who made a purchase (Views → Purchases).
+
+```
+Conversion Rate = 
+VAR TotalVisitors = 
+    CALCULATE(
+        COUNT(fact_customer_journey[JourneyID]),
+        fact_customer_journey[Action] = "View"
+    )
+VAR TotalPurchases = 
+    CALCULATE(
+        COUNT(fact_customer_journey[JourneyID]),
+        fact_customer_journey[Action] = "Purchase"
+    )
+RETURN
+    IF(
+        TotalVisitors = 0,
+        0,
+        DIVIDE(TotalPurchases, TotalVisitors)
+    )
+```
+
 ## Power BI Report
 
+- **Overview**
+
+Main report page summarizing the key aspects of the analysis. It includes crucial insights related to Social Media, Customer Reviews, and Conversion. The page also offers time-based analysis and interactive slicers to enhance user engagement with the report.
+
+![Overview Page](/images/Overview%20Page.png)
+
+- **Social Media Details**
+
+Detailed breakdown of customer reach and engagement with products. This page provides advanced insights into performance metrics, content effectiveness, and audience interactions across social platforms, enabling data-driven optimization of campaigns.
+
+![Social Media Details](/images/Social%20Media%20Details.png)
 ## Credit
