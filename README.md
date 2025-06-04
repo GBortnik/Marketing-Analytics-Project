@@ -11,6 +11,7 @@ Project is based on the Hotel Revenue Dataset. A static PDF export of the dashbo
 - [Python Sentiment Analysis](#python-sentiment-analysis)
 - [Model Relationship](#model-relationship)
 - [Additional DAX Measures](#additional-dax-measures)
+- [Power BI Report](#power-bi-report)
 - [Credit](#credit)
 
 ## SQL Data Preparation
@@ -44,7 +45,20 @@ The Customer Reviews sentiment analysis was performed in Python using following 
 *Full code is available [here](/sentiment_analysis.py).*
 
 ## Model Relationship
+The data model incorporates:
+- All tables previously prepared in SQL and Python
+- An additional **`dim_calendar`** dimension table created via DAX measure. Measure can be found in [Additional DAX Measures](#additional-dax-measures) section.
+
+**Relationship Configuration:**
+- Dimension Tables ↔ Fact Tables:  
+  🔗 **One-to-many** relationships  
+  🔄 **Single-direction** cross-filtering (from dimensions to facts)
+
+![Model Relationship](/Model%20Relationships.png)
 
 ## Additional DAX Measures
+The project utilizes supplemental **DAX measures**, including creation of the dimension table `dim_calendar` and the `Conversion Rate` metric. Details below:
+
+## Power BI Report
 
 ## Credit
