@@ -6,6 +6,8 @@ This project focuses on analyzing marketing datasets. It includes:
 - Final **Power BI** report creation
 
 Static PDF export of the dashboards is available [here](/Marketing%20Analysis%20Report.pdf). Please note that the PDF version does not retain interactive features.
+
+🇵🇱 Polish version of the document can be found [here](/README-PL.md)/Polską wersję dokumentu można znaleźć [tutaj](/README-PL.md). 🇵🇱
 ## Contents
 - [SQL Data Preparation](#sql-data-preparation)
 - [Python Sentiment Analysis](#python-sentiment-analysis)
@@ -152,5 +154,6 @@ This page provides key insights into conversion performance, showing important K
 ![Conversion Details](/images/Conversion%20Details.png)
 
 ## Credit
-**Project Inspiration & Dataset**  
-This project was inspired by [Data Analyst Project](https://github.com/aliahmad-1987/DataAnalystPortfolioProject_PBI_SQL_Python_MarketingAnalytics) and utilizes a dataset provided by the author.  
+**Project Inspiration & Dataset**
+
+This project was inspired by [Data Analyst Project](https://github.com/aliahmad-1987/DataAnalystPortfolioProject_PBI_SQL_Python_MarketingAnalytics) and utilizes a dataset provided by the author.
