@@ -12,8 +12,8 @@ Static PDF export of the dashboards is available [here](/Marketing%20Analysis%20
 - [SQL Data Preparation](#sql-data-preparation)
 - [Python Sentiment Analysis](#python-sentiment-analysis)
 - [Model Relationship](#model-relationship)
-- [Additional DAX Measures](#additional-dax-measures)
 - [Power BI Report](#power-bi-report)
+- [Additional DAX Measures](#additional-dax-measures)
 - [Credit](#credit)
 
 ## SQL Data Preparation
@@ -57,6 +57,34 @@ The data model incorporates:
   🔄 **Single-direction** cross-filtering (from dimensions to facts)
 
 ![Model Relationship](/images/Model%20Relationships.png)
+
+## Power BI Report
+
+- **Overview**
+
+Main report page summarizing the key aspects of the analysis. It includes crucial insights related to Social Media, Customer Reviews, and Conversion. The page also offers time-based analysis and interactive slicers to enhance user engagement with the report.
+
+![Overview Page](/images/Overview%20Page.png)
+
+- **Social Media Details**
+
+Detailed breakdown of customer reach and engagement with products. This page provides advanced insights into performance metrics, content effectiveness, and audience interactions across social platforms, enabling data-driven optimization of campaigns.
+
+![Social Media Details](/images/Social%20Media%20Details.png)
+
+- **Customer Reviews Details**
+
+This page provides key insights into customer feedback, including the percentage of positive reviews and average product ratings. Interactive visuals, such as the decomposition tree and treemap, allow users to explore sentiment distribution and uncover trends or drivers behind customer opinions. The high level of interactivity empowers users to analyze the data from multiple perspectives.
+
+
+
+![Customer Reviews Details](/images/Customer%20Reviews%20Details.png)
+
+- **Conversion Details**
+
+This page provides key insights into conversion performance, showing important KPIs like conversion rates and visitor metrics. Interactive visualizations help users identify bottlenecks and understand how visitors progress through the funnel to optimize sales outcomes.
+
+![Conversion Details](/images/Conversion%20Details.png)
 
 ## Additional DAX Measures
 The project utilizes supplemental **DAX measures**, including creation of the dimension table `dim_calendar` and the `Conversion Rate` metric. Details below:
@@ -124,34 +152,6 @@ VAR PositiveReviews =
 RETURN
 DIVIDE(PositiveReviews, TotalReviews, 0)
 ```
-
-## Power BI Report
-
-- **Overview**
-
-Main report page summarizing the key aspects of the analysis. It includes crucial insights related to Social Media, Customer Reviews, and Conversion. The page also offers time-based analysis and interactive slicers to enhance user engagement with the report.
-
-![Overview Page](/images/Overview%20Page.png)
-
-- **Social Media Details**
-
-Detailed breakdown of customer reach and engagement with products. This page provides advanced insights into performance metrics, content effectiveness, and audience interactions across social platforms, enabling data-driven optimization of campaigns.
-
-![Social Media Details](/images/Social%20Media%20Details.png)
-
-- **Customer Reviews Details**
-
-This page provides key insights into customer feedback, including the percentage of positive reviews and average product ratings. Interactive visuals, such as the decomposition tree and treemap, allow users to explore sentiment distribution and uncover trends or drivers behind customer opinions. The high level of interactivity empowers users to analyze the data from multiple perspectives.
-
-
-
-![Customer Reviews Details](/images/Customer%20Reviews%20Details.png)
-
-- **Conversion Details**
-
-This page provides key insights into conversion performance, showing important KPIs like conversion rates and visitor metrics. Interactive visualizations help users identify bottlenecks and understand how visitors progress through the funnel to optimize sales outcomes.
-
-![Conversion Details](/images/Conversion%20Details.png)
 
 ## Credit
 **Project Inspiration & Dataset**

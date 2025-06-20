@@ -14,8 +14,8 @@ Statyczny eksport dashboardów w formacie PDF jest dostępny [tutaj](/Marketing%
 - [Przygotowanie danych w SQL](#przygotowanie-danych-w-sql)
 - [Analiza Nastrojów w Pythonie](#analiza-nastrojów-w-pythonie)
 - [Model Semantyczny](#model-semantyczny)
-- [Dodatkowe Miary DAX](#dodatkowe-miary-dax)
 - [Raport w Power BI](#raport-w-power-bi)
+- [Dodatkowe Miary DAX](#dodatkowe-miary-dax)
 - [Credit](#credit)
 
 ## Przygotowanie danych w SQL
@@ -59,6 +59,32 @@ Model zawiera:
   🔄 Filtrowanie krzyżowe **jednokierunkowe** (z Dimension do Fact)
 
 ![Model Relationship](/images/Model%20Relationships.png)
+
+## Raport w Power BI
+
+- **Overview**
+
+Główna strona raportu podsumowująca kluczowe aspekty analizy. Zawiera istotne informacje dotyczące mediów społecznościowych, opinii klientów oraz konwersji. Oferuje również analizę czasową oraz slicery, które ułatwiają interakcję użytkownika z raportem.
+
+![Overview Page](/images/Overview%20Page.png)
+
+- **Social Media Details**
+
+Analiza mediów społecznościowych: Szczegółowy przegląd zasięgu i zaangażowania klientów z produktami. Strona oferuje metryki efektywności treści, interakcji odbiorców oraz wyników kampanii, umożliwiając optymalizację działań w oparciu o dane.
+
+![Social Media Details](/images/Social%20Media%20Details.png)
+
+- **Customer Reviews Details**
+
+Strona prezentuje kluczowe wskaźniki dotyczące opinii klientów, w tym procent pozytywnych recenzji i średnią ocenę produktów. Interaktywne wizualizacje, takie jak *decomposition tree* i *treemap*, umożliwiają analizę rozkładu nastrojów oraz odkrywanie trendów i czynników wpływających na opinie. Wysoki poziom interaktywności pozwala użytkownikom analizować dane z różnych perspektyw.
+
+![Customer Reviews Details](/images/Customer%20Reviews%20Details.png)
+
+- **Conversion Details**
+
+Strona prezentuje kluczowe wskaźniki efektywności konwersji, takie jak współczynnik konwersji i metryki odwiedzin. Interaktywne wizualizacje pozwalają użytkownikom zidentyfikować wąskie gardła i zrozumieć przebieg ścieżki zakupowej, co pomaga optymalizować wyniki sprzedaży.
+
+![Conversion Details](/images/Conversion%20Details.png)
 
 ## Dodatkowe Miary DAX
 Projekt wykorzystuje dodatkowe miary **DAX**, w tym np. utworzenie dimension table `dim_calendar` czy metryki `Conversion Rate`. Szczegóły poniżej:
@@ -126,32 +152,6 @@ VAR PositiveReviews =
 RETURN
 DIVIDE(PositiveReviews, TotalReviews, 0)
 ```
-
-## Raport w Power BI
-
-- **Overview**
-
-Główna strona raportu podsumowująca kluczowe aspekty analizy. Zawiera istotne informacje dotyczące mediów społecznościowych, opinii klientów oraz konwersji. Oferuje również analizę czasową oraz slicery, które ułatwiają interakcję użytkownika z raportem.
-
-![Overview Page](/images/Overview%20Page.png)
-
-- **Social Media Details**
-
-Analiza mediów społecznościowych: Szczegółowy przegląd zasięgu i zaangażowania klientów z produktami. Strona oferuje metryki efektywności treści, interakcji odbiorców oraz wyników kampanii, umożliwiając optymalizację działań w oparciu o dane.
-
-![Social Media Details](/images/Social%20Media%20Details.png)
-
-- **Customer Reviews Details**
-
-Strona prezentuje kluczowe wskaźniki dotyczące opinii klientów, w tym procent pozytywnych recenzji i średnią ocenę produktów. Interaktywne wizualizacje, takie jak *decomposition tree* i *treemap*, umożliwiają analizę rozkładu nastrojów oraz odkrywanie trendów i czynników wpływających na opinie. Wysoki poziom interaktywności pozwala użytkownikom analizować dane z różnych perspektyw.
-
-![Customer Reviews Details](/images/Customer%20Reviews%20Details.png)
-
-- **Conversion Details**
-
-Strona prezentuje kluczowe wskaźniki efektywności konwersji, takie jak współczynnik konwersji i metryki odwiedzin. Interaktywne wizualizacje pozwalają użytkownikom zidentyfikować wąskie gardła i zrozumieć przebieg ścieżki zakupowej, co pomaga optymalizować wyniki sprzedaży.
-
-![Conversion Details](/images/Conversion%20Details.png)
 
 ## Credit
 **Inspiracja i źródło danych**  
